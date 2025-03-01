@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background: #252a34;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .spotify-player {
+      display: flex;
+      align-items: center;
+      background: #191414;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      font-family: Arial, sans-serif;
+      color: #1DB954;
+      font-size: 1.2em;
+    }
+    .spotify-logo {
+      width: 40px;
+      height: 40px;
+      margin-right: 15px;
+    }
+    .track-info {
+      color: #fff;
+      margin-right: 15px;
+    }
+    .track-info span {
+      color: #1DB954;
+      font-weight: bold;
+    }
+    .equalizer {
+      display: flex;
+      gap: 3px;
+    }
+    .bar {
+      width: 6px;
+      height: 10px;
+      background: #1DB954;
+      border-radius: 3px;
+      animation: wave 1s infinite ease-in-out;
+    }
+    .bar:nth-child(1) { animation-delay: 0.1s; height: 20px; }
+    .bar:nth-child(2) { animation-delay: 0.3s; height: 15px; }
+    .bar:nth-child(3) { animation-delay: 0.5s; height: 25px; }
+    .bar:nth-child(4) { animation-delay: 0.7s; height: 18px; }
+    .bar:nth-child(5) { animation-delay: 0.9s; height: 22px; }
+    @keyframes wave {
+      0%, 100% { transform: scaleY(1); }
+      50% { transform: scaleY(1.8); }
+    }
+  </style>
+</head>
+<body>
+  <div class="spotify-player">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg" alt="Spotify Logo" class="spotify-logo" />
+    <div class="track-info">Now Playing: <span>Codewave Beats</span></div>
+    <div class="equalizer">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+  </div>
+</body>
+</html>
