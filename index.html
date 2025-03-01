@@ -2,43 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
-      background: #252a34;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-    .spotify-player {
-      display: flex;
-      align-items: center;
+    .card {
+      width: 400px;
+      height: 200px;
       background: #191414;
-      padding: 15px;
       border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      padding: 15px;
+      box-sizing: border-box;
       font-family: Arial, sans-serif;
-      color: #1DB954;
-      font-size: 1.2em;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
     }
     .spotify-logo {
-      width: 40px;
-      height: 40px;
+      width: 50px;
+      height: 50px;
       margin-right: 15px;
     }
     .track-info {
       color: #fff;
-      margin-right: 15px;
+      flex: 1;
     }
-    .track-info span {
+    .track-title {
       color: #1DB954;
       font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+    .label {
+      font-size: 14px;
+      opacity: 0.8;
     }
     .equalizer {
       display: flex;
       gap: 3px;
+      margin-right: 10px;
     }
     .bar {
       width: 6px;
@@ -59,9 +58,12 @@
   </style>
 </head>
 <body>
-  <div class="spotify-player">
+  <div class="card" id="card">
     <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg" alt="Spotify Logo" class="spotify-logo" />
-    <div class="track-info">Now Playing: <span>Codewave Beats</span></div>
+    <div class="track-info">
+      <div class="label">Now Playing</div>
+      <div class="track-title" id="track-name">Codewave Beats</div>
+    </div>
     <div class="equalizer">
       <div class="bar"></div>
       <div class="bar"></div>
@@ -70,5 +72,28 @@
       <div class="bar"></div>
     </div>
   </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const track = urlParams.get('track') || 'Codewave Beats';
+    const theme = urlParams.get('theme') || 'default';
+    const background = urlParams.get('background') || '191414';
+    const hideBorder = urlParams.get('hide_border') === 'true';
+
+    // Apply parameters
+    document.getElementById('track-name').textContent = track;
+    const card = document.getElementById('card');
+    card.style.background = `#${background}`;
+    if (hideBorder) card.style.border = 'none';
+
+    // Theme customization
+    if (theme === 'midnight-purple') {
+      document.querySelector('.track-info').style.color = '#fff';
+      document.querySelector('.track-title').style.color = '#b19cd9';
+      document.querySelectorAll('.bar').forEach(bar => {
+        bar.style.background = '#b19cd9';
+      });
+    }
+  </script>
 </body>
 </html>
